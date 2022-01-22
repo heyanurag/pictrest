@@ -12,7 +12,7 @@
 
 .container {
   max-width: 1000px;
-  margin: 10% auto 0px;
+  margin: 5% auto 2%;
 }
 
 .nav {
@@ -56,6 +56,18 @@
   background: linear-gradient(276deg, #ffba08 0%, #e85d04 26%, #9d0208 100%);
 }
 
-.canvas {
+#canvas {
+  margin-top: 20px;
   column-count: 3;
+}
+
+.card {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.card-image {
+  flex: 1;
+  /* margin-top: 1rem; */
+  border-radius: 10px;
 }
