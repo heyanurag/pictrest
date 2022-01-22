@@ -9,14 +9,20 @@ const api = createApi({
 exports.handler = async (event, context) => {
   const eventBody = JSON.parse(event.body);
 
-  const result = await api.search.getPhotos({
+  const response = await api.search.getPhotos({
     query: eventBody.query,
+    perPage: 20,
   });
 
-  const data = result.response;
+  const results = response.response.results;
+
+  const photos = results.map((photo) => ({
+    description: photo.description,
+    url: photo.urls.regular,
+  }));
 
   return {
-    statusCode: 200,
-    body: JSON.stringify(data),
+    statusCode: response.status,
+    body: JSON.stringify(photos),
   };
 };

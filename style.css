@@ -55,3 +55,7 @@
   cursor: pointer;
   background: linear-gradient(276deg, #ffba08 0%, #e85d04 26%, #9d0208 100%);
 }
+
+.canvas {
+  column-count: 3;
+}
