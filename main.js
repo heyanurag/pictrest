@@ -3,10 +3,8 @@ import "./style.css";
 const form = document.querySelector(".form");
 const input = document.querySelector("input");
 const container = document.querySelector(".container");
-const template = document.getElementsByTagName("template")[0].content;
-const imgTemplate = template.querySelector("img");
-
-// console.log(query.value);
+const template = document.getElementById("template");
+const imgTemplate = template.content.querySelector("img");
 
 const getCanvasElement = () => {
   const canvas = document.createElement("div");
@@ -16,15 +14,14 @@ const getCanvasElement = () => {
 
 const displayPhotos = (photos) => {
   const canvas = getCanvasElement();
-  console.log(photos);
+
   photos.forEach((photo) => {
     const card = document.createElement("div");
     card.classList.add("card");
 
-    imgTemplate.src = photo.url;
-    imgTemplate.alt = photo.description;
-
-    const imgTag = document.importNode(template, true);
+    const imgTag = imgTemplate.cloneNode(true);
+    imgTag.src = photo.url;
+    imgTag.alt = photo.description;
 
     card.appendChild(imgTag);
     canvas.appendChild(card);
