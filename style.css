@@ -72,6 +72,19 @@
   border-radius: 10px;
 }
 
+footer,
+a {
+  margin: 20px 0;
+
+  font-size: 1.8rem;
+  font-family: "Outfit";
+  text-align: center;
+}
+
+a:hover {
+  color: #9d0208;
+}
+
 @media only screen and (max-width: 600px) {
   .container {
     max-width: 300px;

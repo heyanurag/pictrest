@@ -6,6 +6,7 @@ const container = document.querySelector(".container");
 const template = document.getElementById("template");
 const imgTemplate = template.content.querySelector("img");
 
+const pageLimit = 5;
 let pageNo = 1;
 
 const getCanvasElement = () => {
@@ -42,7 +43,7 @@ const getPhotos = async (query) => {
   });
 
   const photos = await response.json();
-  console.log(photos);
+  // console.log(photos);
 
   return photos;
 };
@@ -63,7 +64,8 @@ window.addEventListener("scroll", async (event) => {
 
   if (
     window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight
+      document.documentElement.scrollHeight &&
+    pageNo < pageLimit
   ) {
     pageNo++;
     const photos = await getPhotos(input.value);
