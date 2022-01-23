@@ -8,9 +8,10 @@ const api = createApi({
 
 exports.handler = async (event, context) => {
   const eventBody = JSON.parse(event.body);
-
+  console.log(eventBody);
   const response = await api.search.getPhotos({
     query: eventBody.query,
+    page: eventBody.pageNo,
     perPage: 20,
   });
 

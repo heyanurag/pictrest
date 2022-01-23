@@ -6,6 +6,8 @@ const container = document.querySelector(".container");
 const template = document.getElementById("template");
 const imgTemplate = template.content.querySelector("img");
 
+let pageNo = 1;
+
 const getCanvasElement = () => {
   const canvas = document.createElement("div");
   canvas.id = "canvas";
@@ -35,6 +37,7 @@ const getPhotos = async (query) => {
     method: "POST",
     body: JSON.stringify({
       query,
+      pageNo,
     }),
   });
 
@@ -46,9 +49,24 @@ const getPhotos = async (query) => {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (document.getElementById("canvas")) {
+  while (document.getElementById("canvas")) {
     document.getElementById("canvas").remove();
   }
+  pageNo = 1;
   const photos = await getPhotos(input.value);
   displayPhotos(photos);
+});
+
+window.addEventListener("scroll", async (event) => {
+  // console.log(window.scrollY); //scrolled from top
+  // console.log(window.innerHeight); //visible part of screen
+
+  if (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight
+  ) {
+    pageNo++;
+    const photos = await getPhotos(input.value);
+    displayPhotos(photos);
+  }
 });
