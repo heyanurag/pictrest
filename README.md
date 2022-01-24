@@ -1,4 +1,4 @@
-# Picterest
+# Picterest 📸
 
 This website fetches images from the [unsplash.com](https://unsplash.com/developers) via a netlify serverless function. I also tried replicating the Pintrest masonry layout and implementing infinite scroll!
 
